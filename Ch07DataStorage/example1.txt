@@ -1,0 +1,2 @@
+Hello World!
+Bu, os modülü ile belirtilen dosya yoludur.

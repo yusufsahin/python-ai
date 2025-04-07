@@ -1,0 +1,2 @@
+Hello World!
+Bu, pathlib modülü ile belirtilen dosya yoludur.
