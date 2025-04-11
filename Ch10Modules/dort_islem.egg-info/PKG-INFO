@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: dort_islem
+Version: 0.1
+Summary: Toplama, çıkarma, çarpma ve bölme işlemleri yapan basit Python paketi
+Author: Yusuf Sahin
+Author-email: yusuf@example.com
+Keywords: math,toplama,cikarma,carpma,bolme
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: keywords
+Dynamic: summary
