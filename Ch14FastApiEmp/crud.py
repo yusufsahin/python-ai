@@ -1,5 +1,6 @@
 from database import get_connection
 from models import  EmployeeCreate
+from typing import  List,Dict
 
 async def create_table():
     conn = await get_connection()
@@ -22,3 +23,14 @@ async  def add_employee(data: EmployeeCreate)->int:
     """, data.name, data.department, data.salary)
     await conn.close()
     return row["id"]
+
+async def list_employees() -> List[Dict]:
+    conn = await get_connection()
+    try:
+        rows = await conn.fetch("SELECT id, name, department, salary FROM employees ORDER BY id")
+        return [
+            {"id": row["id"], "name": row["name"], "department": row["department"], "salary": float(row["salary"])}
+            for row in rows
+        ]
+    finally:
+        await conn.close()
