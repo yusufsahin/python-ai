@@ -1,5 +1,5 @@
 from database import get_connection
-from models import EmployeeCreate, EmployeeUpdate
+from models import EmployeeCreate, EmployeeUpdate, EmployeeOut
 from typing import  List,Dict
 
 async def create_table():
@@ -46,3 +46,15 @@ async def delete_employee(emp_id:int):
     conn = await get_connection()
     await conn.execute("DELETE FROM employees WHERE id = $1", emp_id)
     await conn.close()
+
+async def get_employee_by_id(emp_id:int):
+    conn = await get_connection()
+    row = await conn.fetchrow("SELECT id, name, department, salary FROM employees WHERE id = $1", emp_id)
+    await conn.close()
+    if row:
+        return EmployeeOut(id=row["id"],
+            name=row["name"],
+            department=row["department"],
+            salary=float(row["salary"])
+        )
+    return None
